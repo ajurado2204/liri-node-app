@@ -19,23 +19,32 @@ if(firstSelection === "my-tweets"){
     for(var i = 0; i < tweets.length; i++){
       console.log(tweets[i].text + " " + tweets[i].created_at);
     }
-    /*var fs = require("fs");
-
-    fs.writeFile("temp.txt",JSON.stringify(tweets),function(err){
-      if(err){
-
-      }
-    })*/
   });
+
 }else if(firstSelection === "spotify-this-song"){
   console.log("hello2");
 
-  spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(err, data) {
+  spotify.search({ type: 'track', query: nameOfSelection }, function(err, data) {
     if ( err ) {
       console.log('Error occurred: ' + err);
       return;
     }
     //console.log(data);
+    if(data.tracks.items.length > 0){
+      for(var i = 0; i < data.tracks.items.length; i++){
+        console.log(data.tracks.items[i].name + " ,by " + data.tracks.items[i].artists[0].name);
+        console.log("Preview Link: " + data.tracks.items[i].preview_url);
+        console.log("Album Name: " + data.tracks.items[i].album.name);
+        console.log("");
+      }
+    }else{
+      spotify.search({ type: 'track', query: 'what’s my age again'}, function(err, data) {
+        if( err ){
+          console.log('Error occurred: ' + err);
+          return;
+        }
+      });
+    }
 
 
 
