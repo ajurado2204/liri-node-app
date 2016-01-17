@@ -1,11 +1,10 @@
 /**
  * Created by Ale on 1/14/16.
  */
-var fs = require('fs');
-
 var myTweets = require('./my-tweets.js');
 var mySpotify = require('./spotifyThis.js');
-var myMovieList = require('./movieThis');
+var myMovieList = require('./movieThis.js');
+var doWhatItsays = require('./doWhatItSays.js');
 
 var parameters = process.argv.slice(2);
 var firstSelection = parameters[0];
@@ -22,6 +21,10 @@ switch(firstSelection){
 
   case "movie-this":
     myMovieList.movieListings(nameOfSelection);
+    break;
+
+  case "do-what-it-says":
+    doWhatItsays.whatItSays();
     break;
 
   default:
