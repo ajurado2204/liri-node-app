@@ -2,6 +2,8 @@
  * Created by Ale on 1/16/16.
  */
 var request = require('./node_modules/request');
+var fs = require('fs');
+var data;
 
 exports.movieListings = function(){
 
@@ -14,18 +16,24 @@ exports.movieListings = function(){
 
       if(error){
         throw error;
-      }else if(movieObject.Error){
-        console.log(movieObject.Error);
       }else{
-        console.log("Title: " ,movieObject.Title);
-        console.log("Year: " ,movieObject.Year);
-        console.log("IMDB Rating: " ,movieObject.imdbRating);
-        console.log("Country: " ,movieObject.Country);
-        console.log("Language: " ,movieObject.Language);
-        console.log("Plot: " ,movieObject.Plot);
-        console.log("Actors: " ,movieObject.Actors);
-        console.log("Rotten Tomatoes Rating: " ,movieObject.tomatoRating);
-        console.log("Rotten Tomatoes URL: " ,movieObject.tomatoURL);
+
+        data = "Title: " + movieObject.Title + '\n' +
+                "Year: " + movieObject.Year + '\n' +
+                "IMDB Rating: " + movieObject.imdbRating + '\n' +
+                "Country: " + movieObject.Country + '\n' +
+                "Language: " + movieObject.Language + '\n' +
+                "Plot: " + movieObject.Plot + '\n' +
+                "Actors: " + movieObject.Actors + '\n' +
+                "Rotten Tomatoes Rating: " + movieObject.tomatoRating + '\n' +
+                "Rotten Tomatoes URL: " + movieObject.tomatoURL;
+        console.log(data);
+
+        fs.appendFile("log.txt", "--------------------My Movie Search------------------" + '\n' + data + '\n\n', function(err){
+          if(err){
+            throw err;
+          }
+        });
       }
 
     });
@@ -37,16 +45,29 @@ exports.movieListings = function(){
         throw error;
       }else if(movieObject.Error){
         console.log(movieObject.Error);
+        fs.appendFile("log.txt", "--------------------My Movie Search------------------" + '\n' + movieObject.Error + '\n\n', function(err){
+          if(err){
+            throw err;
+          }
+        });
       }else{
-        console.log("Title: " ,movieObject.Title);
-        console.log("Year: " ,movieObject.Year);
-        console.log("IMDB Rating: " ,movieObject.imdbRating);
-        console.log("Country: " ,movieObject.Country);
-        console.log("Language: " ,movieObject.Language);
-        console.log("Plot: " ,movieObject.Plot);
-        console.log("Actors: " ,movieObject.Actors);
-        console.log("Rotten Tomatoes Rating: " ,movieObject.tomatoRating);
-        console.log("Rotten Tomatoes URL: " ,movieObject.tomatoURL);
+
+        data = "Title: " + movieObject.Title + '\n' +
+          "Year: " + movieObject.Year + '\n' +
+          "IMDB Rating: " + movieObject.imdbRating + '\n' +
+          "Country: " + movieObject.Country + '\n' +
+          "Language: " + movieObject.Language + '\n' +
+          "Plot: " + movieObject.Plot + '\n' +
+          "Actors: " + movieObject.Actors + '\n' +
+          "Rotten Tomatoes Rating: " + movieObject.tomatoRating + '\n' +
+          "Rotten Tomatoes URL: " + movieObject.tomatoURL;
+        console.log(data);
+
+        fs.appendFile("log.txt", "--------------------My Movie Search------------------" + '\n' + data + '\n\n', function(err){
+          if(err){
+            throw err;
+          }
+        });
       }
 
     });

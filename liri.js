@@ -29,7 +29,8 @@ if(firstSelection === "do-what-it-says"){
 }
 
 
-function liriMainFunction(nameOfSelection){
+function liriMainFunction(){
+
   switch(firstSelection){
     case "my-tweets":
       myTweets.tweetList();
@@ -48,11 +49,3 @@ function liriMainFunction(nameOfSelection){
       break;
   }
 }
-
-/*var fs = require("fs");
-
- fs.writeFile("temp.txt",JSON.stringify(data),function(err){
- if(err){
-
- }
- })*/

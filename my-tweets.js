@@ -3,7 +3,9 @@
  */
 var myKeys = require("./keys.js");
 var Twitter = require('./node_modules/twitter/lib/twitter');
+var fs = require('fs');
 var client = new Twitter(myKeys.twitterKeys);
+var allMyTweets = '';
 
 exports.tweetList = function(){
 
@@ -11,8 +13,15 @@ exports.tweetList = function(){
   client.get('statuses/user_timeline', params, function(error, tweets, response){
 
     for(var i = 0; i < tweets.length; i++){
-      console.log(tweets[i].text + " " + tweets[i].created_at);
+      allMyTweets += tweets[i].text + " " + tweets[i].created_at + '\n';
     }
+
+    console.log(allMyTweets);
+    fs.appendFile("log.txt", "-----------------------My Tweets---------------------" + '\n' + allMyTweets + '\n', function(err){
+      if(err){
+        throw err;
+      }
+    });
   });
 
 }
