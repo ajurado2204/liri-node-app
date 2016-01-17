@@ -27,7 +27,9 @@ exports.movieListings = function(){
                 "Actors: " + movieObject.Actors + '\n' +
                 "Rotten Tomatoes Rating: " + movieObject.tomatoRating + '\n' +
                 "Rotten Tomatoes URL: " + movieObject.tomatoURL;
-        console.log(data);
+
+        console.log('\n<------------Your movie search------------>');
+        console.log(data + '\n');
 
         fs.appendFile("log.txt", "--------------------My Movie Search------------------" + '\n' + data + '\n\n', function(err){
           if(err){
@@ -44,7 +46,10 @@ exports.movieListings = function(){
       if(error){
         throw error;
       }else if(movieObject.Error){
-        console.log(movieObject.Error);
+
+        console.log('\n<------------Your movie search------------>');
+        console.log(movieObject.Error + '\n');
+
         fs.appendFile("log.txt", "--------------------My Movie Search------------------" + '\n' + movieObject.Error + '\n\n', function(err){
           if(err){
             throw err;
@@ -61,7 +66,9 @@ exports.movieListings = function(){
           "Actors: " + movieObject.Actors + '\n' +
           "Rotten Tomatoes Rating: " + movieObject.tomatoRating + '\n' +
           "Rotten Tomatoes URL: " + movieObject.tomatoURL;
-        console.log(data);
+
+        console.log('\n<------------Your movie search------------>');
+        console.log(data + '\n');
 
         fs.appendFile("log.txt", "--------------------My Movie Search------------------" + '\n' + data + '\n\n', function(err){
           if(err){

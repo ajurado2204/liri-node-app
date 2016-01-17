@@ -16,6 +16,7 @@ exports.tweetList = function(){
       allMyTweets += tweets[i].text + " " + tweets[i].created_at + '\n';
     }
 
+    console.log('\n<------------All your tweets------------>');
     console.log(allMyTweets);
     fs.appendFile("log.txt", "-----------------------My Tweets---------------------" + '\n' + allMyTweets + '\n', function(err){
       if(err){

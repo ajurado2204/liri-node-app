@@ -22,6 +22,8 @@ exports.spotifySongs = function(){
             "Preview Link: " + data.tracks.items[i].preview_url + '\n' +
             "Album Name: " + data.tracks.items[i].album.name + '\n\n';
         }
+
+        console.log('\n<------------Your spotify search------------>');
         console.log(songInfo);
 
         fs.appendFile("log.txt", "-------------------My Spotify Search------------------" + '\n\n' + songInfo, function(err){
@@ -34,6 +36,8 @@ exports.spotifySongs = function(){
   }else{
     spotify.search({ type: 'track', query: nameOfSelection }, function(err, data) {
       if(data.tracks.total === 0){
+        console.log('\n<------------Your spotify search------------>' + '\n' + "Track not found!" + '\n');
+
         fs.appendFile("log.txt", "-------------------My Spotify Search------------------" + '\n' + "Track not found!" + '\n\n', function(err){
           if(err){
             throw err;
@@ -50,6 +54,7 @@ exports.spotifySongs = function(){
                       "Preview Link: " + data.tracks.items[i].preview_url + '\n' +
                       "Album Name: " + data.tracks.items[i].album.name + '\n\n';
           }
+          console.log('\n<------------Your spotify search------------>');
           console.log(songInfo);
 
           fs.appendFile("log.txt", "-------------------My Spotify Search------------------" + '\n\n' + songInfo, function(err){
