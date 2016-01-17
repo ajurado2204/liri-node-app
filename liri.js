@@ -4,40 +4,50 @@
 var myTweets = require('./my-tweets.js');
 var mySpotify = require('./spotifyThis.js');
 var myMovieList = require('./movieThis.js');
-var doWhatItsays = require('./doWhatItSays.js');
+var fs = require('fs');
 
 var parameters = process.argv.slice(2);
 var firstSelection = parameters[0];
 var nameOfSelection = parameters[1];
+var variables;
 
-switch(firstSelection){
-  case "my-tweets":
-    myTweets.tweetList();
-    break;
+if(firstSelection === "do-what-it-says"){
 
-  case "spotify-this-song":
-    mySpotify.spotifySongs(nameOfSelection);
-    break;
-
-  case "movie-this":
-    myMovieList.movieListings(nameOfSelection);
-    break;
-
-  case "do-what-it-says":
-    doWhatItsays.whatItSays();
-    break;
-
-  default:
-    console.log("Hello there");
-    break;
-}
-
-/*else if(firstSelection === "do-what-it-says"){
   fs.readFile("random.txt", "utf8", function(err, data){
-    console.log(data[0]);
+    variables = data.split(',');
+    firstSelection = variables[0];
+
+    if(firstSelection !== "my-tweets"){
+      nameOfSelection = variables[1];
+    }
+
+    liriMainFunction();
   });
+
+}else{
+  liriMainFunction();
 }
-*/
+
+
+function liriMainFunction(nameOfSelection){
+  switch(firstSelection){
+    case "my-tweets":
+      myTweets.tweetList();
+      break;
+
+    case "spotify-this-song":
+      mySpotify.spotifySongs(nameOfSelection);
+      break;
+
+    case "movie-this":
+      myMovieList.movieListings(nameOfSelection);
+      break;
+
+    default:
+      console.log("Hello there");
+      break;
+  }
+}
 
 /*var fs = require("fs");
 
@@ -46,4 +56,3 @@ switch(firstSelection){
 
  }
  })*/
-// Do something with 'data'
