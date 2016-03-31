@@ -6,6 +6,7 @@ var mySpotify = require('./spotifyThis.js');
 var myMovieList = require('./movieThis.js');
 var fs = require('fs');
 
+// Divides terminal input
 var parameters = process.argv.slice(2);
 var firstSelection = parameters[0];
 var nameOfSelection = parameters[1];
@@ -28,7 +29,7 @@ if(firstSelection === "do-what-it-says"){
   liriMainFunction();
 }
 
-
+// Makes a selection according to what the user would like to do
 function liriMainFunction(){
 
   switch(firstSelection){

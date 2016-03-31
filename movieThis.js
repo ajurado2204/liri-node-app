@@ -9,6 +9,7 @@ exports.movieListings = function(){
 
   var nameOfSelection = arguments[0];
 
+  //Makes an API call to omdb API in order to get movie information, default movie is Mr. Nobody
   if(nameOfSelection === undefined){
     nameOfSelection = "Mr. Nobody"
     request("http://www.omdbapi.com/?t=" + nameOfSelection + "&y=&tomatoes=true&plot=short&r=json", function(error, response, body) {
@@ -40,6 +41,7 @@ exports.movieListings = function(){
 
     });
   }else{
+    //Makes an API call to omdb API in order to get movie information from a users input
     request("http://www.omdbapi.com/?t=" + nameOfSelection + "&y=&tomatoes=true&plot=short&r=json", function(error, response, body) {
       var movieObject = JSON.parse(body);
 

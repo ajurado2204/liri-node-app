@@ -9,6 +9,7 @@ var allMyTweets = '';
 
 exports.tweetList = function(){
 
+  // Makes an API call to twitter in order to get my twitter feeds.
   var params = {screen_name: 'ajurado22'};
   client.get('statuses/user_timeline', params, function(error, tweets, response){
 
