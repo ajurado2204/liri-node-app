@@ -13,6 +13,6 @@
 <h5>How to use:</h5>
 <ul>
   <li>node liri.js my-tweets ====> This diplays my twitter feeds</li>
-  <li>node liri.js spotify-this-song '<song name here>' ====> This diplays information of the song name typed</li>
-  <li>node liri.js movie-this '<movie name here>' ====> This diplays information of the movie name typed</li>
+  <li>node liri.js spotify-this-song 'song name here' ====> This diplays information of the song name typed</li>
+  <li>node liri.js movie-this 'movie name here' ====> This diplays information of the movie name typed</li>
 </ul>
